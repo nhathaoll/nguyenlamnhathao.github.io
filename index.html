@@ -3,61 +3,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game Tài Xỉu</title>
-    <style>
-      body {
-        text-align: center;
-        font-family: Arial, sans-serif;
-      }
-      .dice {
-        font-size: 50px;
-      }
-      .result {
-        font-size: 24px;
-        margin-top: 20px;
-      }
-      .btn {
-        font-size: 20px;
-        padding: 10px;
-        margin: 10px;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Game Tài Xỉu</h1>
-    <p>Chọn cược của bạn:</p>
-    <button class="btn" onclick="playGame('tai')">Tài (11-17)</button>
-    <button class="btn" onclick="playGame('xiu')">Xỉu (4-10)</button>
-    <div class="dice" id="dice">🎲 🎲 🎲</div>
-    <div class="result" id="result">Kết quả sẽ hiển thị ở đây</div>
-
+    <title>Giới Thiệu Bản Thân</title>
+    <link rel="stylesheet" href="portfolio.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
     <script>
-      function rollDice() {
-        return Math.floor(Math.random() * 6) + 1;
-      }
-
-      function playGame(choice) {
-        let dice1 = rollDice();
-        let dice2 = rollDice();
-        let dice3 = rollDice();
-        let total = dice1 + dice2 + dice3;
-        let resultText = `🎲 ${dice1} 🎲 ${dice2} 🎲 ${dice3} = ${total} `;
-
-        let outcome = total >= 11 ? "tai" : "xiu";
-        resultText += `<br> Kết quả: ${outcome.toUpperCase()}`;
-
-        if (choice === outcome) {
-          resultText += "<br> 🎉 Bạn đã thắng!";
-        } else {
-          resultText += "<br> ❌ Bạn đã thua!";
-        }
-
-        document.getElementById(
-          "dice"
-        ).innerHTML = `🎲 ${dice1} 🎲 ${dice2} 🎲 ${dice3}`;
-        document.getElementById("result").innerHTML = resultText;
+      function showSection(sectionId) {
+        document.querySelectorAll("section").forEach((section) => {
+          section.classList.remove("active");
+        });
+        document.getElementById(sectionId).classList.add("active");
       }
     </script>
+  </head>
+  <body>
+    <header>
+      <img src="avatar.jpg" alt="Ảnh cá nhân" class="profile-img" />
+      <h1>Nguyễn Lâm Nhật Hào</h1>
+      <p>Nhà phát triển web & Lập trình viên</p>
+    </header>
+
+    <nav class="navbar">
+      <a href="#" onclick="showSection('about')"
+        ><i class="fa-solid fa-user"></i> Giới Thiệu</a
+      >
+      <a href="#" onclick="showSection('skills')"
+        ><i class="fa-solid fa-code"></i> Lĩnh Vực</a
+      >
+      <a href="#" onclick="showSection('projects')"
+        ><i class="fa-solid fa-folder"></i> Dự Án</a
+      >
+      <a href="#" onclick="showSection('contact')"
+        ><i class="fa-solid fa-envelope"></i> Liên Hệ</a
+      >
+    </nav>
+
+    <section id="about" class="active">
+      <h2><i class="fa-solid fa-user"></i> Giới thiệu</h2>
+      <p><strong>Ngày sinh:</strong> 21/11/2003</p>
+      <p><strong>Trường học:</strong> Đại học Công Nghệ Hutech</p>
+      <p>
+        <strong>Địa chỉ:</strong> 2/56 Ấp 21, Xã Tân Thới Nhì, Hóc Môn, TP. Hồ
+        Chí Minh
+      </p>
+      <p>
+        Xin chào! Tôi là Nguyễn Lâm Nhật Hào, một lập trình viên đam mê phát
+        triển web và công nghệ.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2><i class="fa-solid fa-laptop-code"></i> Lĩnh Vực</h2>
+      <p>
+        Phát triển Web, Ứng dụng di động, Lập trình phần mềm, Trí tuệ nhân tạo.
+      </p>
+      <h3><i class="fa-solid fa-code"></i> Ngôn ngữ lập trình</h3>
+      <ul>
+        <li><i class="fa-brands fa-js"></i> JavaScript</li>
+        <li><i class="fa-brands fa-python"></i> Python</li>
+        <li><i class="fa-brands fa-java"></i> Java</li>
+        <li><i class="fa-brands fa-html5"></i> HTML & CSS</li>
+      </ul>
+      <h3><i class="fa-solid fa-layer-group"></i> Framework & Thư viện</h3>
+      <ul>
+        <li><i class="fa-brands fa-react"></i> React.js</li>
+        <li><i class="fa-brands fa-vuejs"></i> Vue.js</li>
+        <li><i class="fa-brands fa-node-js"></i> Node.js</li>
+        <li><i class="fa-brands fa-bootstrap"></i> Bootstrap</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2><i class="fa-solid fa-folder"></i> Các Dự Án</h2>
+      <ul>
+        <li>
+          <strong><i class="fa-solid fa-dice"></i> Game Tài Xỉu:</strong> Một
+          trò chơi may rủi trực tuyến.
+        </li>
+        <li>
+          <strong
+            ><i class="fa-solid fa-cart-shopping"></i> Website Bán Hàng:</strong
+          >
+          Trang web thương mại điện tử.
+        </li>
+        <li>
+          <strong
+            ><i class="fa-solid fa-list-check"></i> Ứng Dụng Quản Lý Công
+            Việc:</strong
+          >
+          Công cụ giúp theo dõi công việc cá nhân.
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2><i class="fa-solid fa-envelope"></i> Liên Hệ</h2>
+      <p>
+        <i class="fa-solid fa-envelope"></i> Email:
+        <a href="mailto:example@gmail.com">example@gmail.com</a>
+      </p>
+      <p>
+        <i class="fa-brands fa-github"></i> GitHub:
+        <a href="https://github.com/nhathaoll" target="_blank"
+          >github.com/nhathaoll</a
+        >
+      </p>
+    </section>
   </body>
 </html>
